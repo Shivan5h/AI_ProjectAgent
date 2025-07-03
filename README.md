@@ -129,5 +129,3 @@ Feel free to open pull requests and suggest improvements!
 * Fine-tuned LLM integration
 * GitHub PR generation and file patching
 * Dockerized deployment
-
-> Built with ❤️ for developers who want AI-powered productivity.
