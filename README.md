@@ -1,80 +1,87 @@
-# 🧠 Agentic Project Explainer
+# 🚀 AI Project & Coding Assistant
 
-A powerful agentic AI tool that helps you understand, explore, and modify code projects. Whether the project is located on GitHub or on your local machine, this agent can:
+A powerful all-in-one AI-powered Streamlit application that unifies three essential tools for developers:
 
-* Load and analyze the entire codebase
-* Answer technical questions with code-level context
-* Suggest code modifications
-* Visualize project structure
-* Remember Q\&A interactions during the session
+* 🧠 **Code Writer**: Converts natural language prompts into fully functional Python, Java, or C++ programs.
+* 🔍 **Code Reviewer**: Reviews your code professionally, identifying bugs, inefficiencies, security issues, and suggesting improvements with interactive explanations.
+* 🧱 **Project Assistant**: Understands and modifies entire codebases from GitHub repositories or local folders with a chat-based AI interface.
 
 ---
 
-## 🚀 Features
+## 🧰 Features
 
-* 🔍 **Understand Projects**: Get contextual, file-referenced answers for any technical query.
-* 📂 **Supports GitHub & Local Projects**: Input a GitHub repo URL or select a local project folder.
-* 💬 **Interactive Q\&A**: Ask anything about the project with live streaming responses using Groq (LLaMA 3).
-* 🧠 **Session Memory**: Remembers your questions and answers for the current session (cleared when server stops).
-* 🛠️ **Code Modification Assistant**: Get suggestions for code changes with precise file references.
-* 🗂️ **Project Structure Viewer**: Explore the directory tree of your project.
+### ✅ Code Writer
+
+* Supports **Python**, **Java**, and **C++**
+* Generates complete programs with:
+
+  * All required imports
+  * Main functions or entry points
+  * Example usage & test cases
+  * Logical comments and explanations
+* Executes and displays output within the app
+
+### ✅ Code Reviewer
+
+* Supports multiple languages: `Python`, `JavaScript`, `Java`, `C++`, `Go`
+* Detailed reviews covering:
+
+  * Code quality
+  * Bugs and edge cases
+  * Performance tips
+  * Security risks
+  * Suggested improvements
+* Hoverable in-code tooltips with simplified explanations
+* Choice of review tone (professional, friendly, detailed, concise)
+
+### ✅ Project Assistant
+
+* Load projects from **GitHub** or **local folders**
+* Understand complex codebases with contextual Q\&A
+* Modify projects based on natural language requests
+* Displays complete **project directory structure**
+* Uses **ChromaDB** + **HuggingFace Embeddings** for code chunk indexing
+* Integrated memory for chat history (session-based)
 
 ---
 
-## 🏗️ Tech Stack
+## 🛠️ Tech Stack
 
 * **Frontend/UI**: Streamlit
-* **LLM API**: Groq (LLaMA3-8b-8192)
-* **Embeddings**: HuggingFace `all-MiniLM-L6-v2`
+* **LLMs**: Groq (`llama3-8b`, `mixtral-8x7b`, `llama2-70b`)
+* **Code Gen**: LangChain + OpenAI Agents
 * **Vector Store**: ChromaDB
-* **Text Splitting**: RecursiveCharacterTextSplitter
+* **Embeddings**: HuggingFace (`all-MiniLM-L6-v2`)
+* **Execution Engine**: Python subprocesses for Java/C++/Python
 * **Git Integration**: GitPython
 
 ---
 
-## 🔧 How It Works
+## 📦 Installation
 
-1. **Project Loading**
+1. **Clone this repo**
 
-   * GitHub: Clone repo using GitPython into a temporary directory.
-   * Local: Load directory from user path input.
+```bash
+git clone https://github.com/Shivan5h/AI_ProjectAgent
+cd ai-project-coding-assistant
+```
 
-2. **File Processing**
-
-   * Parses `.py`, `.js`, `.ts`, `.java`, `.go`, `.rs`, `.md` files.
-   * Chunks content and stores it in a Chroma vectorstore.
-
-3. **Project Q\&A**
-
-   * Retrieves relevant context using vector similarity search.
-   * Sends full prompt with context to Groq's LLM.
-   * Displays streamed response and logs in session memory.
-
-4. **Modification Requests**
-
-   * Generates modification steps including which files to update, exact code changes, and dependencies.
-
-5. **Session Memory**
-
-   * Q\&A log persists until the Streamlit session is closed.
-
----
-
-## 🧪 Usage Instructions
-
-1. Install requirements:
+2. **Install dependencies**
 
 ```bash
 pip install -r requirements.txt
 ```
 
-2. Set your Groq API key:
+3. **Set your API keys**
 
-```bash
-export GROQ_API_KEY=your_key_here
+* Create a `.streamlit/secrets.toml` file:
+
+```toml
+OPENAI_API_KEY = "your-openai-key"
+GROQ_API_KEY = "your-groq-key"
 ```
 
-3. Run the app:
+4. **Run the app**
 
 ```bash
 streamlit run app.py
@@ -82,29 +89,45 @@ streamlit run app.py
 
 ---
 
-## 📁 File Types Supported
+## 🎮 Usage Instructions
 
-* `.py`, `.js`, `.ts`, `.java`, `.go`, `.rs`, `.md`
-
----
-
-## 💡 Example Queries
-
-* "What does `main.py` do?"
-* "How is authentication handled in the project?"
-* "Add logging to all database-related functions."
-* "Which files define the API endpoints?"
+* Navigate using the sidebar
+* Choose **Code Writer**, **Code Reviewer**, or **Project Assistant**
+* Follow on-screen instructions in each tool
 
 ---
 
-## 🛑 Limitations
+## 💡 Example Use Cases
 
-* Session memory is volatile (cleared when app stops)
-* Does not modify files automatically—suggests code only
+* Generate a complete Python program to solve a math puzzle
+* Review and debug a JavaScript snippet for potential issues
+* Load a GitHub repo and ask questions like:
+
+  * "Where is the database connection configured?"
+  * "Add error handling to all I/O operations"
+
+---
+
+## 📁 Supported Languages
+
+* Code Writer: `Python`, `Java`, `C++`
+* Code Reviewer: `Python`, `JavaScript`, `Java`, `C++`, `Go`
+* Project Assistant: `.py`, `.js`, `.ts`, `.java`, `.go`, `.rs`, `.md`
 
 ---
 
 
-## 🤝 Contributions
+## 👥 Contributors
 
-Open to suggestions, ideas, and PRs!
+Feel free to open pull requests and suggest improvements!
+
+---
+
+## 🧠 Future Enhancements
+
+* Code auto-refactoring from natural language
+* Fine-tuned LLM integration
+* GitHub PR generation and file patching
+* Dockerized deployment
+
+> Built with ❤️ for developers who want AI-powered productivity.
